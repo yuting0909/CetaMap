@@ -1,0 +1,106 @@
+{{> header}}
+<main>
+  <div id="data" class="container">
+    <h1 class="h3 pt-5">台灣鯨豚觀測資料搜尋</h1>
+    <form action="/data/sighting-records/search">
+      <div class="input-group my-3">
+        <input type="text" name="taxonname" class="form-control" placeholder="請輸入物種(學名、中文俗名)或分類群" aria-label="物種(分類群)名稱"
+          value="{{taxonname}}" aria-describedby="search-button">
+        <button class="btn btn-outline-secondary" type="Submit" id="search-button">搜尋</button>
+      </div>
+    </form>
+    <div class="data-panel mb-5">
+      <table class="table table-striped table-hover">
+        <thead class="position-sticky top-0 start-0 bg-white">
+          <tr>
+            <th scope="col">學名</th>
+            <th scope="col">俗名</th>
+            <th scope="col">科名</th>
+            <th scope="col">觀測日期</th>
+            <th scope="col">觀測方式</th>
+            <th scope="col">資料集</th>
+            <th scope="col">觀測紀錄</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each sightingRecord}}
+          <tr class="text-secondary">
+            <td scope="row" class="fst-italic">{{this.物種學名}}</th>
+            <td>{{this.物種中文名}}</td>
+            <td>{{this.科}}</td>
+            <td>{{this.觀測日期}}</td>
+            <td>{{this.觀測方式}}</td>
+            <td>{{this.所屬資料集}}</td>
+            <td class="text-center"><a class="link-info" href="/data/sighting-records/{{this.tbnId}}"><i
+                  class="bi bi-box-arrow-up-right"></i></a></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{#if taxonname}}
+    <nav aria-label="Page navigation mb-5">
+      <ul class="pagination">
+        <li class="page-item {{#if pagination.has_pre}}{{else}}disabled{{/if}}">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {{#each pagination.pages}}
+        {{#ifCond this ../pagination.currentPage}}
+        <li class="page-item active">
+          <a class="page-link" href="#">
+            {{this}}
+          </a>
+        </li>
+        {{else}}
+        <li class="page-item">
+          <a class="page-link" href="/data/sighting-records/search?taxonname={{../taxonname}}&page={{this}}">
+            {{this}}
+          </a>
+        </li>
+        {{/ifCond}}
+        {{/each}}
+        <li class="page-item {{#if pagination.has_next}}{{else}}disabled{{/if}}">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    {{else}}
+    <nav aria-label="Page navigation mb-5">
+      <ul class="pagination">
+        <li class="page-item {{#if pagination.has_pre}}{{else}}disabled{{/if}}">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {{#each pagination.pages}}
+        {{#ifCond this ../pagination.currentPage}}
+        <li class="page-item active">
+          <a class="page-link" href="#">
+            {{this}}
+          </a>
+        </li>
+        {{else}}
+        <li class="page-item">
+          <a class="page-link" href="/data/sighting-records?page={{this}}">
+            {{this}}
+          </a>
+        </li>
+        {{/ifCond}}
+        {{/each}}
+        <li class="page-item {{#if pagination.has_next}}{{else}}disabled{{/if}}">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    {{/if}}
+  </div>
+</main>
+{{> footer}}
+<script src="/dist/js/data.bundle.js"></script>
+{{!-- <script src="/data.bundle.js"></script> --}}

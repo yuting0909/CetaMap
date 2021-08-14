@@ -1,0 +1,48 @@
+{{> header}}
+<main>
+  <div id="record-information" class="container pt-5">
+    <div class="row g-5 mt-5">
+      <div class="col-md-6">
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">物種</div>
+          <div class="col-9">{{sightingRecord.物種中文名}} <span class="fst-italic">{{sightingRecord.物種學名}}</span></div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">敏感層級</div>
+          <div class="col-9">{{sightingRecord.敏感資料標示}}</div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">觀測日期</div>
+          <div class="col-9">{{sightingRecord.觀測日期}}</div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">地點</div>
+          <div class="col-9">
+            {{#if sightingRecord.緯度}}
+            <span class="lat">{{sightingRecord.緯度}}</span>, <span class="lon">{{sightingRecord.經度}}</span>
+            <br>{{sightingRecord.行政區}}
+            {{/if}}
+          </div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">觀測方式</div>
+          <div class="col-9">{{sightingRecord.觀測方式}}</div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">描述</div>
+          <div class="col-9"></div>
+        </div>
+        <div class="row border-bottom py-3">
+          <div class="col-3 fw-bold">所屬資料集</div>
+          <div class="col-9">{{sightingRecord.所屬資料集}}</div>
+        </div>
+      </div>
+      <div class="col-md-6 ">
+        <div id="sighting-position"></div>
+      </div>
+    </div>
+  </div>
+</main>
+{{> footer}}
+<script src="/dist/js/detail.bundle.js"></script>
+{{!-- <script src="/detail.bundle.js"></script> --}}

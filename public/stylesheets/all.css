@@ -1,0 +1,35 @@
+/* home */
+header {
+	min-height: 6vh;
+  z-index: 999;
+  background-color: lightblue;
+}
+main {
+  min-height: 94vh;
+}
+#home {
+  height: 94vh;
+}
+.toolbox {
+	overflow-y: scroll;
+}
+.dropdown-menu {
+	height: 50vh;
+}
+.leaflet-popup-content {
+  width: 250px;
+}
+.leaflet-popup-content h3 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+.leaflet-popup-content div {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+/* detail */
+#sighting-position {
+  height: 500px;
+}

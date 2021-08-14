@@ -1,0 +1,88 @@
+/* home */
+header {
+	min-height: 6vh;
+  z-index: 999;
+  background-color: lightblue;
+}
+main {
+  min-height: 94vh;
+}
+#home {
+  height: 94vh;
+}
+.toolbox {
+	overflow-y: scroll;
+}
+.dropdown-menu {
+	height: 50vh;
+}
+.leaflet-popup-content {
+  width: 250px;
+}
+.leaflet-popup-content h3 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+.leaflet-popup-content div {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+/* detail */
+#sighting-position {
+  height: 500px;
+}
+
+/* visualization */
+/* #species-composition {
+  max-width: 1140px;
+} */
+.nav-tabs .nav-link {
+  font-size: 20px;
+  color: #C0C0C0;
+  border: 0;
+}
+.nav-tabs .nav-link.active {
+  font-size: 20px;
+  color: #4682B4;
+  font-weight: 700;
+  border-bottom: 4px solid #4682B4;
+}
+#temporal-distribution-legend {
+  padding: 20px;
+  display: block;
+  columns: 150px;
+}
+
+#temporal-distribution-legend .legend{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  letter-spacing: 0.1rem;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.axisX path, .axisX line, .axisY path, .axisY line{
+  stroke: #d4d8da
+}
+
+.axisX text, .axisY text {
+  font-size: 14px;
+}
+
+#annual-distribution-tooltip, #month-distribution-tooltip {
+  font-size: 14px;
+  display: none;
+  position: absolute;
+  background-color: #F1F1F2;
+  opacity: 0.8;
+  padding: 8px;
+  border-radius: 5px;
+}

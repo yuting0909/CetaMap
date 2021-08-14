@@ -1,0 +1,32 @@
+{{> header}}
+<main>
+  <div id="temporal-distribution" class="container">
+    <h2 class="mt-5 mb-0">鯨豚觀測資料視覺化成果</h2>
+    <ul class="nav nav-tabs my-5 border-0" id="pills-tab" role="tablist">
+      <li class="nav-item pe-3" role="presentation">
+        <a class="nav-link" href="/visualization/species-composition">物種組成</a>
+      </li>
+      <li class="nav-item pe-3" role="presentation">
+        <a class="nav-link active" href="/visualization/temporal-distribution">時間分布</a>
+      </li>
+    </ul>
+    <div class="container mb-5">
+      <div class="row mb-5">
+        <div class="col-12 mb-3">
+          <div class="card" id="temporal-distribution-legend"></div>
+        </div>
+        <h3 class="fs-4 fw-bolder py-3">年分布圖</h3>
+        <div class="col-12 mb-5" id="annual-distribution-chart">
+          <div id="annual-distribution-tooltip"></div>
+        </div>
+        <h3 class="fs-4 fw-bolder py-3">月分布圖</h3>
+        <div class="col-12 mb-5" id="month-distribution-chart">
+          <div id="month-distribution-tooltip"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{> footer}}
+{{!-- <script src="/temporalDistribution.bundle.js"></script> --}}
+<script src="/dist/js/temporalDistribution.bundle.js"></script>
