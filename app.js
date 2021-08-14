@@ -1,22 +1,23 @@
 const express = require('express')
-const webpack = require('webpack')
-const WebpackDevMiddleware = require('webpack-dev-middleware')
-const WebpackHotMiddleware = require('webpack-hot-middleware')
 const exphbs = require('express-handlebars')
-const config = require('./webpack.config.dev.js')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static(__dirname))
 
-const compiler = webpack(config)
-
-app.use(WebpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  stats: { colors: true }
-}))
-app.use(WebpackHotMiddleware(compiler))
+if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack')
+  const WebpackDevMiddleware = require('webpack-dev-middleware')
+  const WebpackHotMiddleware = require('webpack-hot-middleware')
+  const config = require('./webpack.config.dev.js')
+  const compiler = webpack(config)
+  app.use(WebpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
+  }))
+  app.use(WebpackHotMiddleware(compiler))
+}
 
 app.engine('hbs', exphbs({
   extname: '.hbs',
