@@ -68,5 +68,8 @@
     </div>
   </div>
 </main>
-{{!-- <script src="/index.bundle.js"></script> --}}
+{{#if isDev}}
+<script src="/index.bundle.js"></script>
+{{else}}
 <script src="/dist/js/index.bundle.js"></script>
+{{/if}}

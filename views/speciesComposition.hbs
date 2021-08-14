@@ -45,5 +45,8 @@
   </div>
 </main>
 {{> footer}}
-{{!-- <script src="/speciesComposition.bundle.js"></script> --}}
+{{#if isDev}}
+<script src="/speciesComposition.bundle.js"></script>
+{{else}}
 <script src="/dist/js/speciesComposition.bundle.js"></script>
+{{/if}}

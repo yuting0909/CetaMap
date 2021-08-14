@@ -17,6 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
     stats: { colors: true }
   }))
   app.use(WebpackHotMiddleware(compiler))
+  app.use((req, res, next) => {
+    res.locals.isDev = true
+    next()
+  })
 }
 
 app.engine('hbs', exphbs({

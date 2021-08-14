@@ -28,5 +28,8 @@
   </div>
 </main>
 {{> footer}}
-{{!-- <script src="/temporalDistribution.bundle.js"></script> --}}
+{{#if isDev}}
+<script src="/temporalDistribution.bundle.js"></script>
+{{else}}
 <script src="/dist/js/temporalDistribution.bundle.js"></script>
+{{/if}}

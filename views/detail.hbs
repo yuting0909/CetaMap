@@ -44,5 +44,8 @@
   </div>
 </main>
 {{> footer}}
+{{#if isDev}}
+<script src="/detail.bundle.js"></script>
+{{else}}
 <script src="/dist/js/detail.bundle.js"></script>
-{{!-- <script src="/detail.bundle.js"></script> --}}
+{{/if}}
