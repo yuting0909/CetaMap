@@ -56,11 +56,11 @@ const view = {
       const marker = L.marker([data[i].緯度, data[i].經度], { icon: myIcon })
         .bindPopup(`
           <h3>${data[i].物種中文名}</h3>
-          <div>學名：${data[i].物種學名}</div>
-          <div>觀測日期：${data[i].觀測日期}</div>
+          <div>學名：<span class="fst-italic">${data[i].物種學名}</span></div>
+          <div>觀測日期：${data[i].觀測日期 || '無觀測日期'}</div>
           <div>觀測方式：${data[i].觀測方式}</div>
           <div>敏感資料座標精確度：${data[i].敏感資料座標精確度}</div>
-          <div><a href="https://www.tbn.org.tw/occurrence/${data[i].tbnId}" target="_blank">詳細觀測紀錄</a></div>
+          <div><a href="/data/sighting-records/${data[i].tbnId}" target="_blank">詳細觀測紀錄</a></div>
           `)
       marker.addTo(markerLayer)
     }
@@ -104,11 +104,11 @@ const view = {
       .bindPopup(
         `
           <h3>${record.物種中文名}</h3>
-          <div>學名：${record.物種學名}</div>
-          <div>觀測日期：${record.觀測日期}</div>
+          <div>學名：<span class="fst-italic">${record.物種學名}</span></div>
+          <div>觀測日期：${record.觀測日期 || '無觀測日期'}</div>
           <div>觀測方式：${record.觀測方式}</div>
           <div>敏感資料座標精確度：${record.敏感資料座標精確度}</div>
-          <div><a href="https://www.tbn.org.tw/occurrence/${record.tbnId}" target="_blank">詳細觀測紀錄</a></div>
+          <div><a href="/data/sighting-records/${record.tbnId}" target="_blank">詳細觀測紀錄</a></div>
           `
       )
       .openPopup()
