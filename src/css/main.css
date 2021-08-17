@@ -86,3 +86,11 @@ main {
   padding: 8px;
   border-radius: 5px;
 }
+
+/* signup & login */
+.form-signup .btn, .form-login .btn {
+  background-color: lightblue;
+}
+.input-group-text {
+  color: #6c757d;
+}

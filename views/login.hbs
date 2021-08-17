@@ -1,0 +1,37 @@
+{{> header}}
+<main>
+  <div class="container pt-5">
+    <div class="row mt-5">
+      <div class="col-md-6 col-xxl-5 m-auto">
+        <div class="card card-body bg-light border-0 rounded-3 p-5">
+          <form class="form-login" action="/login" method="POST">
+            <div class="text-center mb-4">
+              <h1 class="h3 mb-3 font-weight-normal">登入</h1>
+            </div>
+            <div class="input-group border-bottom mb-3">
+              <div class="input-group-text border-0 bg-transparent fs-5"><i class="bi bi-person-fill"></i></div>
+              <input type="text" name="name" class="form-control bg-transparent border-0" placeholder="Username">
+            </div>
+            <div class="input-group border-bottom mb-3">
+              <div class="input-group-text border-0 bg-transparent fs-5"><i class="bi bi-envelope-fill"></i></div>
+              <input type="text" name="email" class="form-control bg-transparent border-0" placeholder="Email">
+            </div>
+            <div class="input-group border-bottom mb-3">
+              <div class="input-group-text border-0 bg-transparent fs-5"><i class="bi bi-lock-fill"></i></i></div>
+              <input type="password" name="password" class="form-control bg-transparent border-0"
+                placeholder="Password">
+            </div>
+            <br />
+            <div class="d-grid mb-5">
+              <button class="btn btn-lg btn-block rounded-3 fw-bold text-light" type="submit">登入</button>
+            </div>
+            <div class="text-center">
+              <p>還沒有帳號了? <a href="/signup">馬上註冊</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{> footer}}
