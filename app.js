@@ -1,11 +1,13 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const db = require('./models')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static(__dirname))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')

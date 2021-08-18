@@ -15,5 +15,6 @@ module.exports = (app) => {
   app.get('/visualization/temporal-distribution', visualController.getTemporalDistribution)
 
   app.get('/signup', userController.signupPage)
+  app.post('/signup', userController.signup)
   app.get('/login', userController.loginPage)
 }
