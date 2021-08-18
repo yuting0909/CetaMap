@@ -1,6 +1,8 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const flash = require('connect-flash')
+const session = require('express-session')
 const db = require('./models')
 
 const app = express()
@@ -8,6 +10,8 @@ const port = process.env.PORT || 3000
 
 app.use(express.static(__dirname))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
+app.use(flash())
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
@@ -31,6 +35,12 @@ app.engine('hbs', exphbs({
   helpers: require('./config/handlebars-helpers')
 }))
 app.set('view engine', 'hbs')
+
+app.use((req, res, next) => {
+  res.locals.success_messages = req.flash('success_messages')
+  res.locals.error_messages = req.flash('error_messages')
+  next()
+})
 
 require('./routes')(app)
 
