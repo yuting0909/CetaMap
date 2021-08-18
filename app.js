@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const flash = require('connect-flash')
 const session = require('express-session')
+const passport = require('./config/passport')
 const db = require('./models')
 
 const app = express()
@@ -12,6 +13,8 @@ app.use(express.static(__dirname))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
 app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
@@ -37,12 +40,14 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs')
 
 app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
   res.locals.success_messages = req.flash('success_messages')
   res.locals.error_messages = req.flash('error_messages')
   next()
 })
 
-require('./routes')(app)
+require('./routes')(app, passport)
 
 app.use((req, res, next) => res.status(404).render('error'))
 

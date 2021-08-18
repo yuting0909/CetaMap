@@ -27,8 +27,17 @@ const userController = {
       })
     })
   },
-  loginPage (red, res) {
+  loginPage (req, res) {
     return res.render('login')
+  },
+  login (req, res) {
+    req.flash('success_messages', '成功登入！')
+    res.redirect('/map')
+  },
+  logout: (req, res) => {
+    req.flash('success_messages', '登出成功！')
+    req.logout()
+    res.redirect('/login')
   }
 }
 
