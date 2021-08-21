@@ -5,3 +5,12 @@
   </div>
 </main>
 {{> footer}}
+{{#if isDev}}
+<script src="/main.bundle.js"></script>
+<script src="/vendors.bundle.js"></script>
+<script src="/error.bundle.js"></script>
+{{else}}
+<script src="/dist/js/main.bundle.js"></script>
+<script src="/dist/js/vendors.bundle.js"></script>
+<script src="/dist/js/error.bundle.js"></script>
+{{/if}}

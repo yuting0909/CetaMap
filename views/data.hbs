@@ -103,7 +103,11 @@
 </main>
 {{> footer}}
 {{#if isDev}}
+<script src="/main.bundle.js"></script>
+<script src="/vendors.bundle.js"></script>
 <script src="/data.bundle.js"></script>
 {{else}}
+<script src="/dist/js/main.bundle.js"></script>
+<script src="/dist/js/vendors.bundle.js"></script>
 <script src="/dist/js/data.bundle.js"></script>
 {{/if}}

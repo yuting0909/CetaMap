@@ -9,7 +9,10 @@ module.exports = {
     data: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/data.js'],
     detail: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/detail.js'],
     speciesComposition: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/speciesComposition.js'],
-    temporalDistribution: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/temporalDistribution.js']
+    temporalDistribution: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/temporalDistribution.js'],
+    signup: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/signup.js'],
+    login: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/login.js'],
+    error: ['webpack/hot/dev-server', 'webpack-hot-middleware/client', './src/js/error.js']
   },
   output: {
     path: '/',
@@ -50,10 +53,33 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        // 抽離 node_modules
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          name: 'vendors',
+          priority: 20,
+          enforce: true
+        },
+        // 抽離 main.css
+        main: {
+          test: /\.css$/,
+          chunks: 'initial',
+          minSize: 0,
+          name: 'main',
+          minChunks: 2,
+          priority: 10
+        }
+      }
+    }
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'main.css'
+      filename: '[name].css'
     })
   ]
 }

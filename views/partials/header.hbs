@@ -1,27 +1,43 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light py-0" style="background-color: lightblue;">
+<header class="d-flex align-items-center">
+  <nav class="navbar navbar-expand-lg navbar-light w-100 py-0" style="background-color: lightblue;">
     <div class="container-fluid px-3">
-      <h1><a class="navbar-brand fs-3" href="/map">鯨視 | 鯨豚生態視覺化平台</a></h1>
+      <h1 class="mb-0"><a class="navbar-brand fs-3 d-none d-sm-block" href="/map">鯨視 | 鯨豚生態視覺化平台</a><a class="navbar-brand fs-3 d-block d-sm-none" href="/map">鯨視</a></h1>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav align-items-center w-100">
+        <ul class="navbar-nav align-items-lg-center w-100">
           <li class="nav-item">
             <a class="nav-link" href="/data/sighting-records">資料</a>
           </li>
           <li class="nav-item me-auto">
             <a class="nav-link" href="/visualization/species-composition">視覺化</a>
           </li>
-          <li class="nav-item">
-            {{#if isAuthenticated}}
+          {{#if isAuthenticated}}
+          <li class="nav-item dropdown d-none d-lg-block">
             <span class="nav-link d-inline">Hi! {{user.name}}</span>
-            <a class="nav-link d-inline btn btn-outline-light px-3 py-1 border-2 rounded-pill" href="/logout">登出</a>
-            {{else}}
-            <a class="nav-link btn btn-outline-light px-3 py-1 border-2 rounded-pill" href="/login">登入</a>
-            {{/if}}
+            <a class="nav-link d-inline dropdown-toggle" href="#" id="memberShipDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fs-4 bi bi-person-circle"></i></a>
+            <ul class="dropdown-menu h-auto" aria-labelledby="memberShipDropdownMenu">
+              <li><a class="dropdown-item" href="#">個人資料</a></li>
+              <li><a class="dropdown-item" href="#">上傳觀測紀錄</a></li>
+              <li><a class="dropdown-item" href="/logout">登出</a></li>
+            </ul>
           </li>
+          <li class="nav-item dropdown d-lg-none">
+            <a class="nav-link d-block dropdown-toggle" href="#" id="memberShipDropdownMenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">會員中心</a>
+            <ul class="dropdown-menu h-auto bg-transparent border-0" aria-labelledby="memberShipDropdownMenu">
+              <li><a class="dropdown-item" href="#">個人資料</a></li>
+              <li><a class="dropdown-item" href="#">上傳觀測紀錄</a></li>
+              <li><a class="dropdown-item" href="/logout">登出</a></li>
+            </ul>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light px-3 py-1 border-2 rounded-pill" href="/login">登入</a>
+          </li>
+          {{/if}}
         </ul>
       </div>
     </div>

@@ -46,7 +46,11 @@
 </main>
 {{> footer}}
 {{#if isDev}}
+<script src="/main.bundle.js"></script>
+<script src="/vendors.bundle.js"></script>
 <script src="/speciesComposition.bundle.js"></script>
 {{else}}
+<script src="/dist/js/main.bundle.js"></script>
+<script src="/dist/js/vendors.bundle.js"></script>
 <script src="/dist/js/speciesComposition.bundle.js"></script>
 {{/if}}

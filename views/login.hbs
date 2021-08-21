@@ -32,3 +32,12 @@
   </div>
 </main>
 {{> footer}}
+{{#if isDev}}
+<script src="/main.bundle.js"></script>
+<script src="/vendors.bundle.js"></script>
+<script src="/login.bundle.js"></script>
+{{else}}
+<script src="/dist/js/main.bundle.js"></script>
+<script src="/dist/js/vendors.bundle.js"></script>
+<script src="/dist/js/login.bundle.js"></script>
+{{/if}}
